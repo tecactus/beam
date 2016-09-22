@@ -1,0 +1,4 @@
+
+Beam::routes();
+
+Route::get('/home', 'HomeController@index');

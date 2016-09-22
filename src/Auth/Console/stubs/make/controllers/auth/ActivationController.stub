@@ -1,0 +1,58 @@
+<?php
+
+namespace {{namespace}}Http\Controllers\Auth;
+
+use {{namespace}}User;
+use Validator;
+use {{namespace}}Http\Controllers\Controller;
+use Beam\Foundation\Auth\ActivatesUsers;
+
+class ActivationController extends Controller
+{
+    /*
+    |--------------------------------------------------------------------------
+    | Register Controller
+    |--------------------------------------------------------------------------
+    |
+    | This controller handles the registration of new users as well as their
+    | validation and creation. By default this controller uses a trait to
+    | provide this functionality without requiring any additional code.
+    |
+    */
+
+    use ActivatesUsers;
+
+    /**
+     * Where to redirect users after activation.
+     *
+     * @var string
+     */
+    protected $redirectTo = '/login';
+
+    /**
+     * Where to redirect users after activation if they are logged in.
+     *
+     * @var string
+     */
+    protected $redirectToWhenLoggedIn = '/home';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth')->only('sendAccountActivationLink');
+    }
+
+    /**
+     * Handles a particular action after account activation
+     *
+     * @return  void
+     */
+    protected function afterActivation($user)
+    {
+
+    }
+}
